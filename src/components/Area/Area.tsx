@@ -12,11 +12,13 @@ interface Props{
     y: number,
     structure: number[][],
     emptyPuzzle: Puzzle,
+    moves: number,
     setEmptyPuzzle: React.Dispatch<React.SetStateAction<Puzzle>>,
-    setStructure: React.Dispatch<React.SetStateAction<number[][]>>
+    setStructure: React.Dispatch<React.SetStateAction<number[][]>>,
+    addMoves: React.Dispatch<React.SetStateAction<number>>
 }
 
-const Area: React.FC<Props> = ({number, x, y, structure, emptyPuzzle, setStructure, setEmptyPuzzle}) => {
+const Area: React.FC<Props> = ({number, x, y, structure, emptyPuzzle, moves, setStructure, setEmptyPuzzle, addMoves}) => {
     let isClickable=false;
     if(emptyPuzzle.x===x && emptyPuzzle.y+1===y){
         isClickable=true;
@@ -37,12 +39,7 @@ const Area: React.FC<Props> = ({number, x, y, structure, emptyPuzzle, setStructu
         struct[emptyPuzzle.x][emptyPuzzle.y]=number;
         setStructure(struct)
         setEmptyPuzzle({x,y})
-    }
-
-    const puzzle_inner_variant = {
-        initial: {backgroundColor: "#c87941"},
-        hover: {backgroundColor: "#609060"},
-        exit: {backgroundColor: "#c87941"}
+        addMoves(moves+1)
     }
 
     return(

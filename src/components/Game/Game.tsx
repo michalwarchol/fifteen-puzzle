@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Area from "../Area/Area"
-//import "./Game.css"
+import "./Game.css"
 
 const Game: React.FC = () => {
 
@@ -68,35 +68,59 @@ const Game: React.FC = () => {
         let struct = structure;
         let x: number = 0;
         let y: number = 0;
-        struct.forEach((tab, index)=>{
-            if(tab.indexOf(-1)!==-1){
+        struct.forEach((tab, index) => {
+            if (tab.indexOf(-1) !== -1) {
                 x = index;
                 y = struct[x].indexOf(-1);
             }
         })
-        return {x, y}
+        return { x, y }
     }
 
     const [structure, setStructure] = useState<number[][]>(beginGame());
     const [emptyPuzzle, setEmptyPuzzle] = useState<Puzzle>(findEmptyPuzzle())
+    const [moves, addMoves] = useState<number>(0);
+
+    useEffect(() => {
+        let finished = true;
+        structure.forEach((el, i) => {
+            el.forEach((elem, index) => {
+                if (elem !== i * 4 + index + 1 && elem !== -1) {
+                    finished = false;
+                }
+            })
+        })
+        console.log("----------")
+        if (finished) {
+            alert("eee")
+            console.log("kurwica")
+        }
+    })
 
     return (
-        <div>
-            <h1>Game</h1>
-            <div>
-                {structure.map((elem, i) => {
-                    return elem.map((element, index) => {
-                        return <Area 
-                                    number={element} 
-                                    x={i} 
-                                    y={index} 
-                                    structure={structure}
-                                    emptyPuzzle={emptyPuzzle}
-                                    setStructure={setStructure}
-                                    setEmptyPuzzle={setEmptyPuzzle}
-                                    key={i + ", " + index} />
-                    })
-                })}
+        <div className="container">
+            <h1>Fifteen Puzzle</h1>
+            <div className="content">
+                <div className="game">
+                    {structure.map((elem, i) => {
+                        return elem.map((element, index) => {
+                            return <Area
+                                number={element}
+                                x={i}
+                                y={index}
+                                moves={moves}
+                                addMoves={addMoves}
+                                structure={structure}
+                                emptyPuzzle={emptyPuzzle}
+                                setStructure={setStructure}
+                                setEmptyPuzzle={setEmptyPuzzle}
+                                key={i + ", " + index} />
+                        })
+                    })}
+                </div>
+                <div className="info">
+                    Total moves: {moves}
+                </div>
             </div>
         </div>
     )

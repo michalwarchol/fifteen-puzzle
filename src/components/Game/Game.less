@@ -1,0 +1,44 @@
+//variables
+@c_0: #7579e7;
+@c_1: #9ab3f5;
+@c_2: #a3d8f4;
+@c_3: #b9fffc;
+
+//mixins
+.content-alignments{
+    justify-self: center;
+    align-self: center;
+}
+
+.container{
+    background-color: @c_3;
+    height: 100vh;
+    display: flex;
+    justify-self: center;
+    flex-direction: column;
+    h1{
+        margin: 0;
+        text-align: center;
+        color: @c_0;
+        padding: 40px 0;
+    }
+    .content{
+        display: grid;
+        .game{
+            .content-alignments();
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(4, 1fr);
+            gap: 10px; 
+        }
+        .info{
+            .content-alignments();
+            width: 100%;
+            margin-top: 60px;
+            font-weight: bold;
+            font-size: 300%;
+            color: @c_0;
+            text-align: center;
+        }
+    }
+}
