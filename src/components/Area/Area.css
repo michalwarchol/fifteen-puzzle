@@ -1,10 +1,5 @@
 .puzzle {
   width: 120px;
-  border-left: 2px solid #7579e7;
-  border-bottom: 2px solid #7579e7;
+  height: 120px;
   cursor: pointer;
-  transition: background-color 0.1s;
-}
-.puzzle:hover {
-  background-color: #9ab3f5;
 }

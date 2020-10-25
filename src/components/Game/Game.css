@@ -2,37 +2,110 @@
   justify-self: center;
   align-self: center;
 }
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Nunito Regular'), local('Nunito-Regular'), url(https://fonts.gstatic.com/s/nunito/v14/XRXV3I6Li01BKof4Mg.ttf) format('truetype');
+}
 .container {
+  font-family: 'Nunito', sans-serif;
   background-color: #b9fffc;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-self: center;
   flex-direction: column;
+  color: #7579e7;
 }
 .container h1 {
   margin: 0;
   text-align: center;
-  color: #7579e7;
+  font-size: 72px;
   padding: 40px 0;
 }
 .container .content {
   display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 2fr 2fr 2fr 1fr;
+}
+@media screen and (min-width: 768px) {
+  .container .content {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 3fr 1fr;
+  }
+}
+.container .content .template {
+  grid-row-start: 2;
+  grid-row-end: 2;
+  grid-column-start: 1;
+  grid-column-end: 1;
+  justify-self: center;
+}
+@media screen and (min-width: 768px) {
+  .container .content .template {
+    grid-row-start: 1;
+    grid-row-end: 1;
+  }
 }
 .container .content .game {
   justify-self: center;
   align-self: center;
+}
+.container .content .game_inner {
   display: grid;
+  grid-row-start: 1;
+  grid-row-end: 1;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
-  gap: 10px;
+  gap: 2px;
+}
+@media screen and (min-width: 768px) {
+  .container .content .game_inner {
+    grid-row-start: 1;
+    grid-row-end: 1;
+    grid-column-start: 2;
+    grid-column-end: 2;
+  }
+}
+.container .content .game .moves {
+  margin-top: 10px;
+  font-size: 200%;
+  font-weight: bold;
+  width: 100%;
+  text-align: center;
+}
+.container .content .options {
+  grid-row-start: 3;
+  grid-row-end: 3;
+  grid-column-start: 1;
+  grid-column-end: 1;
+}
+@media screen and (min-width: 768px) {
+  .container .content .options {
+    grid-row-start: 1;
+    grid-row-end: 1;
+    grid-column-start: 3;
+    grid-column-end: 3;
+  }
 }
 .container .content .info {
   justify-self: center;
   align-self: center;
+  grid-column-start: 1;
+  grid-column-end: 1;
+  grid-row-start: 4;
+  grid-row-end: 4;
   width: 100%;
   margin-top: 60px;
   font-weight: bold;
-  font-size: 300%;
-  color: #7579e7;
   text-align: center;
+}
+@media screen and (min-width: 768px) {
+  .container .content .info {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 2;
+    grid-row-end: 2;
+  }
 }

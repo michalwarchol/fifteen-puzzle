@@ -1,4 +1,5 @@
 import React from 'react'
+import Canvas from '../Canvas/Canvas'
 import "./Area.css"
 
 type Puzzle = {
@@ -13,12 +14,14 @@ interface Props{
     structure: number[][],
     emptyPuzzle: Puzzle,
     moves: number,
+    imgRef: React.RefObject<HTMLImageElement>,
     setEmptyPuzzle: React.Dispatch<React.SetStateAction<Puzzle>>,
     setStructure: React.Dispatch<React.SetStateAction<number[][]>>,
     addMoves: React.Dispatch<React.SetStateAction<number>>
 }
 
-const Area: React.FC<Props> = ({number, x, y, structure, emptyPuzzle, moves, setStructure, setEmptyPuzzle, addMoves}) => {
+const Area: React.FC<Props> = ({number, x, y, structure, emptyPuzzle, moves, imgRef, setStructure, setEmptyPuzzle, addMoves}) => {
+
     let isClickable=false;
     if(emptyPuzzle.x===x && emptyPuzzle.y+1===y){
         isClickable=true;
@@ -44,9 +47,10 @@ const Area: React.FC<Props> = ({number, x, y, structure, emptyPuzzle, moves, set
 
     return(
         <div className="puzzle" 
-        onClick={isClickable?handleClick:undefined}>
+        onClick={isClickable?handleClick:undefined}
+        style={isClickable?{}:{cursor: "default"}}>
             <div className="puzzle_inner">
-                <h1>{number!==-1?number:null}</h1>
+                <Canvas number={number} imgRef={imgRef}/>
             </div>
         </div>
     )
