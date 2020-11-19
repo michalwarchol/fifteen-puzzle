@@ -6,23 +6,30 @@
 .menu_content{
     display: grid;
     grid-template-rows: 1fr 4fr 1fr;
+    @media screen and (max-width: 560px){
+        grid-template-rows: 1fr 3fr 1fr;
+    }
     justify-content: center;
     color: @c_0;
     h2{
+        margin-top: 0;
         font-size: 34px;
         align-self: end;
         text-align: center;
     }
     h3{
         justify-self: center;
-        width: 200px;
+        width: 160px;
         font-size: 200%;
         border: 1px solid @c_0;
         border-radius: 100px;
         text-align: center;
-        padding: 10px;
+        padding: 10px 10px;
         cursor: pointer;
         transition: background-color 0.2s ease-in-out;
+        @media screen and (max-width: 560px){
+            font-size: 20px;
+        }
         &:hover{
             background-color: @c_1;
         }
@@ -40,6 +47,10 @@
         .menu_image{
             width: 250px;
             height: 250px;
+            @media screen and (max-width: 560px){
+                width: 125px;
+                height: 125px;
+            }
             box-sizing: border-box;
             overflow: hidden;
             display: flex;
@@ -65,6 +76,10 @@
                 position: absolute;
                 width: 258px;
                 height: 258px;
+                @media screen and (max-width: 560px){
+                    width: 129px;
+                    height: 129px;
+                }
                 z-index: 1;
             }
         }

@@ -17,10 +17,11 @@ interface Props{
     imgRef: React.RefObject<HTMLImageElement>,
     setEmptyPuzzle: React.Dispatch<React.SetStateAction<Puzzle>>,
     setStructure: React.Dispatch<React.SetStateAction<number[][]>>,
-    addMoves: React.Dispatch<React.SetStateAction<number>>
+    addMoves: React.Dispatch<React.SetStateAction<number>>,
+    checkGameStatus(): void
 }
 
-const Area: React.FC<Props> = ({number, x, y, structure, emptyPuzzle, moves, imgRef, setStructure, setEmptyPuzzle, addMoves}) => {
+const Area: React.FC<Props> = ({number, x, y, structure, emptyPuzzle, moves, imgRef, setStructure, setEmptyPuzzle, addMoves, checkGameStatus}) => {
 
     let isClickable=false;
     if(emptyPuzzle.x===x && emptyPuzzle.y+1===y){
@@ -43,6 +44,7 @@ const Area: React.FC<Props> = ({number, x, y, structure, emptyPuzzle, moves, img
         setStructure(struct)
         setEmptyPuzzle({x,y})
         addMoves(moves+1)
+        checkGameStatus()
     }
 
     return(
