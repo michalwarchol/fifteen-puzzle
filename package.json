@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@types/react": "^17.0.3",
+    "@types/react-dom": "^17.0.2",
     "cra-template-typescript": "1.0.3",
     "framer-motion": "^2.9.1",
     "less-watch-compiler": "^1.14.6",
