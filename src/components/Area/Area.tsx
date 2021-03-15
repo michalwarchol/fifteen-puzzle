@@ -14,6 +14,7 @@ interface Props{
     structure: number[][],
     emptyPuzzle: Puzzle,
     moves: number,
+    finished: boolean,
     imgRef: React.RefObject<HTMLImageElement>,
     setEmptyPuzzle: React.Dispatch<React.SetStateAction<Puzzle>>,
     setStructure: React.Dispatch<React.SetStateAction<number[][]>>,
@@ -21,7 +22,7 @@ interface Props{
     checkGameStatus(): void
 }
 
-const Area: React.FC<Props> = ({number, x, y, structure, emptyPuzzle, moves, imgRef, setStructure, setEmptyPuzzle, addMoves, checkGameStatus}) => {
+const Area: React.FC<Props> = ({number, x, y, structure, emptyPuzzle, moves, finished, imgRef, setStructure, setEmptyPuzzle, addMoves, checkGameStatus}) => {
 
     let isClickable=false;
     if(emptyPuzzle.x===x && emptyPuzzle.y+1===y){
@@ -49,7 +50,7 @@ const Area: React.FC<Props> = ({number, x, y, structure, emptyPuzzle, moves, img
 
     return(
         <div className="puzzle" 
-        onClick={isClickable?handleClick:undefined}
+        onClick={isClickable&&!finished?handleClick:undefined}
         style={isClickable?{}:{cursor: "default"}}>
             <div className="puzzle_inner">
                 <Canvas number={number} imgRef={imgRef}/>

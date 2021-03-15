@@ -7,7 +7,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/nunito/v14/XRXV3I6Li01BKof4Mg.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/nunito/v16/XRXV3I6Li01BKof4Mg.ttf) format('truetype');
 }
 .container {
   position: relative;
@@ -75,6 +75,21 @@
   font-weight: bold;
   width: 100%;
   text-align: center;
+}
+.container .content .game .moves .button {
+  margin-top: 10px;
+}
+.container .content .game .moves .button span {
+  width: 160px;
+  border: 1px solid #7579e7;
+  border-radius: 100px;
+  text-align: center;
+  padding: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+.container .content .game .moves .button span:hover {
+  background-color: #9ab3f5;
 }
 .container .info {
   position: absolute;

@@ -125,7 +125,7 @@ const Game: React.FC = () => {
     const [finished, setFinished] = useState<boolean>(false);
 
     const imgRef = useRef<HTMLImageElement>(null);
-
+    console.log(gameOn)
     return (
         <div className="container">
             <div className="title"><h1>Fifteen Puzzle</h1></div>
@@ -147,6 +147,7 @@ const Game: React.FC = () => {
                                         x={i}
                                         y={index}
                                         moves={moves}
+                                        finished={finished}
                                         addMoves={addMoves}
                                         structure={structure}
                                         emptyPuzzle={emptyPuzzle}
@@ -159,7 +160,10 @@ const Game: React.FC = () => {
                             })}
                         </div>
                         <div className="moves">
-                            Total moves: {moves}
+                            <span>Total moves: {moves}</span>
+                            <div className="button">
+                                <span onClick={playAgain}>&#8592; Go back</span>
+                            </div>
                         </div>
                     </div>
                     <WinScreen finished={finished} moves={moves} playAgain={playAgain} />
